@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: naturequest-audio-explorer
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: GROQ_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ELEVENLABS_API_KEY
+        sync: false
+      - key: ELEVENLABS_VOICE_ID
+        value: 21m00Tcm4TlvDq8ikWAM
+      - key: SERPAPI_API_KEY
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: NEXT_PUBLIC_SENTRY_DSN
+        sync: false
