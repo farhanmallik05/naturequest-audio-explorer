@@ -32,6 +32,20 @@ Enter any city, neighborhood, or park, and NatureQuest orchestrates an autonomou
 
 Instead of a monolithic prompt, NatureQuest implements an autonomous agent architecture powered by **Mastra**:
 
+```mermaid
+graph TD
+    A["User Input: Location (e.g. Kyoto Arashiyama)"] --> B["Mastra Agent Orchestrator (natureGuideAgent)"]
+    B --> C["natureSearchTool (SerpApi)"]
+    C -->|"Authentic outdoor spots & trailheads"| B
+    B --> D["Gemma 2-9B Reasoning (Groq / Open-Weight)"]
+    D -->|"Sensory-rich 3-sentence quest"| B
+    B --> E["elevenLabsTtsTool (ElevenLabs)"]
+    E -->|"Crystal-clear audio guide narration"| B
+    B --> F["questMemoryTool (MongoDB Atlas)"]
+    F -->|"Stores quest in Community Vault"| B
+    B --> G["Interactive Next.js Player & Community Vault"]
+```
+
 ```
 [ User: "Kyoto Arashiyama" ]
             │
