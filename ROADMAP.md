@@ -107,14 +107,13 @@ None identified. All routes, components, and tools map 1:1 with the Hacktoberfes
 
 ## 8. Blockers & Decisions Needed
 
-* **Render Deployment Execution**: The `render.yaml` Blueprint is ready. Waiting on connecting the repository in the user's Render dashboard.
 * **ElevenLabs Sponsor Credit**: Claim the free Hacktoberfest participant promo code at `hacktoberfest.com/my` to reactivate live neural voice generation.
 
 ---
 
 ## 9. Next Actions (Ranked Priority)
 
-1. **PROV-001**: Connect repository `farhanmallik05/naturequest-audio-explorer` to Render Blueprint to launch live production web service.
+1. [x] **PROV-001**: Connect repository `farhanmallik05/naturequest-audio-explorer` to Render Blueprint — **Completed & Verified Live at https://naturequest-audio-explorer.onrender.com**
 2. **PERK-001**: Claim participant ElevenLabs promo credits at `hacktoberfest.com/my` and configure key on Render dashboard.
 3. **CI-001**: Add `.github/workflows/ci.yml` to automate ESLint and Turbopack build checks on every commit.
 4. **TEST-001**: Set up Vitest test harness and implement unit tests for `runNatureQuestWorkflow` fallback handling.
