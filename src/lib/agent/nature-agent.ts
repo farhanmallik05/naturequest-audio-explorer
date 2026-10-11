@@ -95,26 +95,37 @@ export async function runNatureQuestWorkflow(location: string): Promise<QuestAge
         baseURL: 'https://api.groq.com/openai/v1',
       });
 
-      const completion = await groq.chat.completions.create({
-        model: 'gemma2-9b-it',
-        messages: [
-          { role: 'system', content: GEMMA_SYSTEM_PROMPT },
-          {
-            role: 'user',
-            content: `Create a nature quest for these spots in ${location}: ${spotsSummary}`,
-          },
-        ],
-        temperature: 0.7,
-        max_tokens: 180,
-      });
+      const modelCandidates = process.env.GROQ_MODEL
+        ? [process.env.GROQ_MODEL]
+        : ['gemma2-9b-it', 'openai/gpt-oss-20b', 'qwen/qwen3.8-27b'];
 
-      const responseText = completion.choices[0]?.message?.content?.trim();
-      if (responseText) {
-        narrative = responseText;
-        modelUsed = 'Gemma-2-9B-IT (via Groq Open-Weight)';
+      for (const candidate of modelCandidates) {
+        try {
+          const completion = await groq.chat.completions.create({
+            model: candidate,
+            messages: [
+              { role: 'system', content: GEMMA_SYSTEM_PROMPT },
+              {
+                role: 'user',
+                content: `Create a nature quest for these spots in ${location}: ${spotsSummary}`,
+              },
+            ],
+            temperature: 0.7,
+            max_tokens: 180,
+          });
+
+          const responseText = completion.choices[0]?.message?.content?.trim();
+          if (responseText) {
+            narrative = responseText;
+            modelUsed = `${candidate} (via Groq Open-Weight)`;
+            break;
+          }
+        } catch {
+          // Attempt next open-weight model candidate
+        }
       }
     } catch (err) {
-      console.warn('Groq Gemma generation failed, falling back:', err);
+      console.warn('Groq generation failed, falling back:', err);
     }
   }
 
