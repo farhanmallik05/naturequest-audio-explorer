@@ -23,8 +23,8 @@ Enter any city, neighborhood, or park, and NatureQuest orchestrates an autonomou
 
 ## 🚀 Demo & Code
 
-- **Live Web App on Render:** `https://naturequest-audio-explorer.onrender.com` *(Replace with your deployed Render service URL)*
-- **GitHub Repository:** `https://github.com/your-username/naturequest-audio-explorer` *(Replace with your GitHub repo URL)*
+- **Live Web App on Render:** `https://naturequest-audio-explorer.onrender.com`
+- **GitHub Repository:** [github.com/farhanmallik05/naturequest-audio-explorer](https://github.com/farhanmallik05/naturequest-audio-explorer)
 
 ---
 
